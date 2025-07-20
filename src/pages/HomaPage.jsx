@@ -3,7 +3,7 @@ import Navbar from "../components/NavBar";
 
 const HomaPage = () => {
     return (
-        <div>
+        <div className="w-11/12 mx-auto">
             {/* a navbar seciton  */}
             <Navbar></Navbar>
 
