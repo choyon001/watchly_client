@@ -59,7 +59,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/favorites"
+              to="favourites"
               className={({ isActive }) =>
                 `hover:text-orange-500 font-semibold ${
                   isActive ? "text-orange-500" : ""
@@ -209,12 +209,12 @@ const Navbar = () => {
         ) : (
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-              <Link to="auth/login" className=" ">
+              <Link to="/auth/login" className=" ">
                 Login
               </Link>
             </li>
             <li>
-              <Link to="auth/register" className=" ">
+              <Link to="/auth/register" className=" ">
                 Register
               </Link>
             </li>

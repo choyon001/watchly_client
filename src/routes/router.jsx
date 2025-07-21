@@ -1,7 +1,5 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
-import HomaPage from "../pages/HomaPage";
+import { createBrowserRouter } from "react-router-dom";
+import HomePage from "../pages/HomePage";
 import ErrorPage from "../pages/ErrorPage";
 import Movies from "../pages/Movies";
 import PrivateRoute from "./PrivateRoute";
@@ -10,48 +8,60 @@ import Favourites from "../components/Favourites";
 import AuthPage from "../pages/AuthPage";
 import Login from "../components/Login";
 import Register from "../components/Register";
-
+import About from "./../pages/About";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<HomaPage></HomaPage>
-  },
-  {
-    path: "/movies",
-    element:<Movies></Movies>,
-    children:[
+    element: <HomePage></HomePage>,
+    children: [
       {
-        path:"add-movie",
-        element:<PrivateRoute><AddMovie></AddMovie></PrivateRoute>
+        path: "movies",
+        element: <Movies></Movies>,
       },
       {
-        path:"favorites",
-        element:<PrivateRoute><Favourites></Favourites></PrivateRoute>
-      }
-    ]
-  },
-  {
-    path:"auth",
-    element:<AuthPage></AuthPage>,
-    children:[
-      {
-        path:"login",
-        element:<Login></Login>
+        path: "add-movie",
+        element: (
+          <PrivateRoute>
+            <AddMovie></AddMovie>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"register",
-        element:<Register></Register>
-      }
-    ]
+        path: "favourites",
+        element: (
+          <PrivateRoute>
+            <Favourites></Favourites>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "about",
+        element: <About></About>,
+      },
+
+      {
+    path: "/auth",
+    element: <AuthPage></AuthPage>,
+    children: [
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+    ],
+  },
+    ],
   },
   
+
   {
-    path:"*",
-    element:<ErrorPage></ErrorPage>
-  }
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
+  },
 ]);
-
-
 
 export default router;
