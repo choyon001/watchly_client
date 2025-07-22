@@ -2,10 +2,7 @@ import { createContext } from "react";
 
 export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
-    const user = {
-        name: "John Doe",
-        email: "john@gmail.com"
-    }
+    const user = null;
     const authInfo = {
         user
     }

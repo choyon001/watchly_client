@@ -9,12 +9,17 @@ import AuthPage from "../pages/AuthPage";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import About from "./../pages/About";
+import Slider from "../components/Slider";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage></HomePage>,
     children: [
+      {
+        path: "/",
+        element:<Slider></Slider>
+      },
       {
         path: "movies",
         element: <Movies></Movies>,

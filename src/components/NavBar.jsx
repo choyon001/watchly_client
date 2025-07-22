@@ -125,7 +125,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="bg-white px-5 py-3 flex justify-between items-center animate__animated animate__fadeInDown"
+      className="bg-white px-5 py-3 flex justify-between items-center animate__animated animate__fadeInDown w-11/12 mx-auto fixed top-0 z-50 "
       data-aos="fade-down"
     >
 
@@ -188,7 +188,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-[#F8F6F0] rounded-box z-10 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#F8F6F0] rounded-box z-10 mt-3 w-52 p-2 shadow "
             >
               <li>
                 <Link to="/profile" className="justify-between">
