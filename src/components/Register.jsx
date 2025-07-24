@@ -90,6 +90,20 @@ const Register = () => {
         updateUser({ displayName: name, photoURL: photoUrl })
           .then(() => {
             {loading && <RingLoader></RingLoader>}
+            const userData = {
+              displayName: name|| "Anonymous",
+              email: email,
+              photoURL: photoUrl || "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
+
+            }
+            fetch("http://localhost:5000/users",{
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+              
+            })
             navigate("/");
 
             event.target.reset();
