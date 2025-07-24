@@ -3,8 +3,16 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "./../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { RingLoader } from "react-spinners";
+import Swal from "sweetalert2";
 const Register = () => {
-  const { createNewUser, updateUser, setUser,googleSignIn,loading,setLoading} = useContext(AuthContext);
+  const {
+    createNewUser,
+    updateUser,
+    setUser,
+    googleSignIn,
+    loading,
+    setLoading,
+  } = useContext(AuthContext);
   // make password error state
   const [passwordError, setPasswordError] = useState("");
   // creating navigate so that redirect
@@ -56,8 +64,7 @@ const Register = () => {
     return isValid;
   };
 
-
-  // handle google sign in 
+  // handle google sign in
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
@@ -67,7 +74,7 @@ const Register = () => {
       .catch((error) => {
         console.error("Error signing in with Google:", error.message);
       });
-  }
+  };
 
   const handleNewUser = (event) => {
     event.preventDefault();
@@ -82,29 +89,37 @@ const Register = () => {
     if (!validatePassword(password)) {
       return;
     }
-    // set a loader 
+    // set a loader
     setLoading(true);
     createNewUser(email, password)
       .then((result) => {
         setUser(result.user);
         updateUser({ displayName: name, photoURL: photoUrl })
           .then(() => {
-            {loading && <RingLoader></RingLoader>}
-            const userData = {
-              displayName: name|| "Anonymous",
-              email: email,
-              photoURL: photoUrl || "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
-
+            {
+              loading && <RingLoader></RingLoader>;
             }
-            fetch("http://localhost:5000/users",{
+            const userData = {
+              displayName: name || "Anonymous",
+              email: email,
+              photoURL:
+                photoUrl ||
+                "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
+              createdDate: result.user.metadata.creationTime,
+            };
+            fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(userData),
-              
-            })
+            });
             navigate("/");
+            Swal.fire({
+              icon: "success",
+              title: "Registration Successful",
+              text: "Welcome to Watchly!",
+            });
 
             event.target.reset();
           })
@@ -114,6 +129,12 @@ const Register = () => {
       })
       .catch((error) => {
         console.error("Error creating user:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          html: `<p class="text-red-500">${error.message}</p>`, 
+          
+        });
       })
       .finally(() => {
         setLoading(false);
@@ -128,7 +149,7 @@ const Register = () => {
           <RingLoader color="#F97316" size={60} />
         </div>
       )}
-      
+
       <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">
         Register for Watchly
       </h2>
@@ -172,7 +193,7 @@ const Register = () => {
         {passwordError && (
           <p className="text-red-500 text-xs mt-1">{passwordError}</p>
         )}
-        
+
         <button
           type="submit"
           className="w-full py-3 bg-orange-600 text-white font-semibold rounded hover:bg-orange-700 transition"
@@ -181,16 +202,16 @@ const Register = () => {
         </button>
       </form>
       <div className="mb-6 mt-6">
-          <button
-            className="w-full py-3 px-4 flex items-center justify-center gap-3 bg-orange-600 text-white 
+        <button
+          className="w-full py-3 px-4 flex items-center justify-center gap-3 bg-orange-600 text-white 
               font-semibold rounded  hover:bg-orange-700 transition 
                 "
-                onClick={handleGoogleSignIn}
-          >
-            <FcGoogle className="w-5 h-5" />
-            <span className="text-sm sm:text-base">Register with Google</span>
-          </button>
-        </div>
+          onClick={handleGoogleSignIn}
+        >
+          <FcGoogle className="w-5 h-5" />
+          <span className="text-sm sm:text-base">Register with Google</span>
+        </button>
+      </div>
     </div>
   );
 };
