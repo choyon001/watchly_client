@@ -16,4 +16,28 @@ A user-friendly Movie Portal to simplify the process of exploring movies, viewin
 - **Deployment**: Firebase for frontend, Vercel for backend
 - **Version Control**: Git, GitHub
 
+## Registration Page
 
+A modern and responsive registration page built with React and Express, integrated with Firebase Authentication and MongoDB.
+
+---
+
+### 🧰 Tech Stack
+
+- **react-icons**
+- **react-spinners**
+- **sweetalert2**
+- **Express.js**
+- **CORS**
+- **MongoDB**
+- **Firebase**
+
+---
+
+### 📸 Screenshots
+
+### 💻 Desktop View  
+![Desktop View](./assets/registration_page_large_display.png)
+
+### 📱 Mobile View  
+![Mobile View](./assets/registration_page_small_display.png)
