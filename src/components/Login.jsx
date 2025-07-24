@@ -11,7 +11,7 @@ const Login = () => {
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white md:border-2  md:border-orange-200 rounded-lg mt-10 mb-10">
-            <h1 className="text-2xl font-bold mb-6 text-center">Login to Watchly</h1>
+            <h1 className="text-2xl font-bold mb-6 text-center text-orange-500">Login to Watchly</h1>
             <form onSubmit={handleSubmit} >
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>

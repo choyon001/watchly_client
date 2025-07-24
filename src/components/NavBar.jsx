@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "animate.css";
@@ -8,10 +8,23 @@ import { AuthContext } from "../provider/AuthProvider";
 AOS.init();
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user ,logOut,setUser } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
- 
- 
+  const navigate = useNavigate();
+  const handleLogOut = ()=>{
+    logOut()
+    .then(() => {
+      // Sign-out successful.
+      console.log("User logged out successfully");
+      setUser(null);
+      navigate("/");
+    })
+    .catch((error) => {
+      
+      console.error("Error logging out:", error.message);
+    }
+  );
+  }
 
   
   const navLinks = (
@@ -93,7 +106,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                     `hover:text-orange-500 font-semibold ${
                     isActive ? "text-orange-500" : ""
-                    } md:hidden`
+                    }   md:hidden`
                 }
                 onClick={() => setMobileMenuOpen(false)}
                 >
@@ -202,21 +215,37 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link to="/">Logout</Link>
+                <Link to="/" onClick={handleLogOut}>Logout</Link>
               </li>
             </ul>
           </div>
         ) : (
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-              <Link to="/auth/login" className=" ">
+                <NavLink
+                to="/auth/login"
+                className={({ isActive }) =>
+                    `hover:text-orange-500 font-semibold ${
+                    isActive ? "text-orange-500" : ""
+                    }`
+                }
+                onClick={() => setMobileMenuOpen(false)}
+                >
                 Login
-              </Link>
+                </NavLink>
             </li>
             <li>
-              <Link to="/auth/register" className=" ">
+                <NavLink
+                to="/auth/register"
+                className={({ isActive }) =>
+                    `hover:text-orange-500 font-semibold ${
+                    isActive ? "text-orange-500" : ""
+                    }`
+                }
+                onClick={() => setMobileMenuOpen(false)}
+                >
                 Register
-              </Link>
+                </NavLink>
             </li>
           </ul>
         )}
