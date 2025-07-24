@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -40,6 +40,17 @@ const Login = () => {
                         Forgot Password?
                     </a>
                 </div>
+                <div className="mb-6">
+                          <button
+                           
+                            className="w-full py-3 px-4 flex items-center justify-center gap-3 bg-orange-600 text-white 
+                              font-semibold rounded  hover:bg-orange-700 transition 
+                                "
+                          >
+                            <FcGoogle className="w-5 h-5" />
+                            <span className="text-sm sm:text-base">Login with Google</span>
+                          </button>
+                        </div>
                 <button
                     type="submit"
                     className="w-full py-3 bg-orange-600 text-white font-semibold rounded hover:bg-orange-700 transition"
