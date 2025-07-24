@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "./../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { RingLoader } from "react-spinners";
 const Register = () => {
-  const { createNewUser, updateUser, setUser,googleSignIn} = useContext(AuthContext);
+  const { createNewUser, updateUser, setUser,googleSignIn,loading,setLoading} = useContext(AuthContext);
   // make password error state
   const [passwordError, setPasswordError] = useState("");
   // creating navigate so that redirect
@@ -81,12 +82,14 @@ const Register = () => {
     if (!validatePassword(password)) {
       return;
     }
-
+    // set a loader 
+    setLoading(true);
     createNewUser(email, password)
       .then((result) => {
         setUser(result.user);
         updateUser({ displayName: name, photoURL: photoUrl })
           .then(() => {
+            {loading && <RingLoader></RingLoader>}
             navigate("/");
 
             event.target.reset();
@@ -97,11 +100,21 @@ const Register = () => {
       })
       .catch((error) => {
         console.error("Error creating user:", error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white md:border-2  md:border-orange-200 rounded-lg mt-10 mb-10">
+      {/* loader */}
+      {loading && (
+        <div className="absolute inset-0 bg-white bg-opacity-70 flex items-center justify-center z-10">
+          <RingLoader color="#F97316" size={60} />
+        </div>
+      )}
+      
       <h2 className="text-2xl font-bold mb-6 text-center text-orange-500">
         Register for Watchly
       </h2>
