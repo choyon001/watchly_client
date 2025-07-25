@@ -83,7 +83,6 @@ const Register = () => {
     const email = form.get("email");
     const photoUrl = form.get("photoUrl");
     const password = form.get("password");
-    console.log(name, email, photoUrl, password);
 
     // Validate the password
     if (!validatePassword(password)) {
@@ -96,9 +95,7 @@ const Register = () => {
         setUser(result.user);
         updateUser({ displayName: name, photoURL: photoUrl })
           .then(() => {
-            {
-              loading && <RingLoader></RingLoader>;
-            }
+           
             const userData = {
               displayName: name || "Anonymous",
               email: email,
@@ -124,11 +121,16 @@ const Register = () => {
             event.target.reset();
           })
           .catch((error) => {
-            console.error("Error updating user profile:", error.message);
+            
+            Swal.fire({
+              icon: "error",
+              title: "Update Failed",
+              text: "Could not update user profile.",
+            });
           });
       })
       .catch((error) => {
-        console.error("Error creating user:", error.message);
+        
         Swal.fire({
           icon: "error",
           title: "Oops...",

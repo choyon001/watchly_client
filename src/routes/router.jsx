@@ -10,6 +10,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import About from "./../pages/About";
 import Slider from "../components/Slider";
+import ForgetPassword from "../components/ForgetPassword";
 
 const router = createBrowserRouter([
   {
@@ -57,10 +58,15 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register></Register>,
       },
-    ],
+      {
+    path:"forgot-password",
+    element:<ForgetPassword></ForgetPassword>
   },
     ],
   },
+    ],
+  },
+  
   
 
   {
