@@ -62,3 +62,5 @@ A user-friendly interface for adding movies, built with React and integrated wit
 ![Desktop View](./assets/AddMovie_Desktop.png)
 ### 📱 Mobile View
 ![Mobile View](./assets/AddMovie_Mobile.png)
+### MongoDB Schema View 
+![MongoDB Schema](./assets/AddMovie_Mongodb.png)
