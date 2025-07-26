@@ -52,3 +52,13 @@ A modern and responsive registration page built with React and Express, integrat
 
 ### 📱 Mobile View  
 ![Mobile View](./assets/login_mobile.png)
+
+---
+### Add Movie Page
+A user-friendly interface for adding movies, built with React and integrated with MongoDB
+
+### 📸 Screenshots
+### 💻 Desktop View
+![Desktop View](./assets/AddMovie_Desktop.png)
+### 📱 Mobile View
+![Mobile View](./assets/AddMovie_Mobile.png)
