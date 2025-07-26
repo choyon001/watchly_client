@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <div >
             {/* a navbar seciton  */}
-            <Navbar ></Navbar>
+            <Navbar  ></Navbar>
             <div className=" h-5 md:h-20"></div>
             
             

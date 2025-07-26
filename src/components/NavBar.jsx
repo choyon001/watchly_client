@@ -8,25 +8,22 @@ import { AuthContext } from "../provider/AuthProvider";
 AOS.init();
 
 const Navbar = () => {
-  const { user ,logOut,setUser } = useContext(AuthContext);
+  const { user, logOut, setUser } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const handleLogOut = ()=>{
-    logOut()
-    .then(() => {
-      // Sign-out successful.
-      console.log("User logged out successfully");
-      setUser(null);
-      navigate("/");
-    })
-    .catch((error) => {
-      
-      console.error("Error logging out:", error.message);
-    }
-  );
-  }
 
-  
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("User logged out successfully");
+        setUser(null);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error.message);
+      });
+  };
+
   const navLinks = (
     <>
       <li>
@@ -72,7 +69,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="favourites"
+              to="/favourites"
               className={({ isActive }) =>
                 `hover:text-orange-500 font-semibold ${
                   isActive ? "text-orange-500" : ""
@@ -98,92 +95,78 @@ const Navbar = () => {
           About
         </NavLink>
       </li>
-      {
-        !user &&(
-            <li>
-                <NavLink
-                to="/auth/login"
-                className={({ isActive }) =>
-                    `hover:text-orange-500 font-semibold ${
-                    isActive ? "text-orange-500" : ""
-                    }   md:hidden`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-                >
-                Login
-                </NavLink>
-            </li>
-        )
-      }
-
-      {
-        !user &&(
-            <li>
-                <NavLink
-                to="/auth/register"
-                className={({ isActive }) =>
-                    `hover:text-orange-500 font-semibold ${
-                    isActive ? "text-orange-500" : ""
-                    } md:hidden`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-                >
-                Register
-                </NavLink>
-            </li>
-        )
-      }
+      {!user && (
+        <>
+          <li>
+            <NavLink
+              to="/auth/login"
+              className={({ isActive }) =>
+                `hover:text-orange-500 font-semibold ${
+                  isActive ? "text-orange-500" : ""
+                } md:hidden`
+              }
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/auth/register"
+              className={({ isActive }) =>
+                `hover:text-orange-500 font-semibold ${
+                  isActive ? "text-orange-500" : ""
+                } md:hidden`
+              }
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Register
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
   return (
     <nav
-      className="bg-white px-5 py-3 flex justify-between items-center animate__animated animate__fadeInDown w-11/12 mx-auto fixed top-0 z-50 "
+      className="bg-white px-5 py-3 animate__animated animate__fadeInDown fixed top-0 z-50 w-full "
       data-aos="fade-down"
     >
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden">
+          <button
+            className="text-3xl text-orange-600 focus:outline-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? "✖" : "☰"}
+          </button>
+        </div>
 
-     {/* Mobile Menu Button */}
-      <div className="lg:hidden">
-        <button
-          className="text-3xl text-orange-600 focus:outline-none"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Menu"
+        {/* Logo / Website Name */}
+        <Link to="/" className="text-2xl font-bold text-orange-600 italic">
+          <span className="hidden md:inline-block">🎬</span> Watchly
+        </Link>
+
+        {/* Mobile Menu Dropdown */}
+        <div
+          className={`lg:hidden absolute top-16 left-0 right-0 bg-white shadow-lg z-50 transition-all duration-300 ${
+            mobileMenuOpen ? "block" : "hidden"
+          }`}
         >
-          {mobileMenuOpen ? "✖" : "☰"}
-        </button>
-      </div>
+          <ul className="menu p-4 space-y-3">{navLinks}</ul>
+        </div>
 
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center">
+          <ul className="menu menu-horizontal gap-5 px-1">{navLinks}</ul>
+        </div>
 
-      {/* Logo / Website Name */}
-      <Link to="/" className="text-2xl font-bold text-orange-600 italic">
-        <span className="hidden md:inline-block">🎬</span> Watchly
-      </Link>
-
-     
-
-      {/* Mobile Menu Dropdown */}
-      <div
-        className={`lg:hidden absolute top-16 left-0 right-0 bg-white shadow-lg z-50 transition-all duration-300 ${
-          mobileMenuOpen ? "block" : "hidden"
-        }`}
-      >
-        <ul className="menu p-4 space-y-3">
-          {navLinks}
-          
-        </ul>
-      </div>
-
-      {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center">
-        <ul className="menu menu-horizontal gap-5 px-1">{navLinks}
-            
-        </ul>
-      </div>
-
-      {/* Desktop User Section */}
-      
+        {/* Desktop User Section */}
         {user ? (
-          <div className="dropdown dropdown-end ">
+          <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -201,55 +184,50 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-[#F8F6F0] rounded-box z-10 mt-3 w-52 p-2 shadow "
+              className="menu menu-sm dropdown-content bg-[#F8F6F0] rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to="/profile" className="justify-between">
-                  Profile
-                </Link>
+                <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <Link to="/updateProfile" className="justify-between">
-                  Update
-                </Link>
+                <Link to="/updateProfile">Update</Link>
               </li>
-
               <li>
-                <Link to="/" onClick={handleLogOut}>Logout</Link>
+                <Link to="/" onClick={handleLogOut}>
+                  Logout
+                </Link>
               </li>
             </ul>
           </div>
         ) : (
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-                <NavLink
+              <NavLink
                 to="/auth/login"
                 className={({ isActive }) =>
-                    `hover:text-orange-500 font-semibold ${
+                  `hover:text-orange-500 font-semibold ${
                     isActive ? "text-orange-500" : ""
-                    }`
+                  }`
                 }
-                onClick={() => setMobileMenuOpen(false)}
-                >
+              >
                 Login
-                </NavLink>
+              </NavLink>
             </li>
             <li>
-                <NavLink
+              <NavLink
                 to="/auth/register"
                 className={({ isActive }) =>
-                    `hover:text-orange-500 font-semibold ${
+                  `hover:text-orange-500 font-semibold ${
                     isActive ? "text-orange-500" : ""
-                    }`
+                  }`
                 }
-                onClick={() => setMobileMenuOpen(false)}
-                >
+              >
                 Register
-                </NavLink>
+              </NavLink>
             </li>
           </ul>
         )}
-      
+      </div>
     </nav>
   );
 };
