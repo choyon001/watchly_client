@@ -17,13 +17,14 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import LatestReleases from "../components/LatestReleases";
 import TopContributors from "../components/TopContributors";
 import UserProfile from "../components/UserProfile";
+import UpdateProfile from "../components/UpdateProfile";
 
 function HomeLayout() {
   return (
     <>
       <Slider />
       <FeaturedMovies />
-      
+
       <LatestReleases></LatestReleases>
       <TopContributors></TopContributors>
       <WhyChooseUs></WhyChooseUs>
@@ -37,9 +38,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<HomeLayout></HomeLayout>
+        element: <HomeLayout></HomeLayout>,
       },
-      
+
       {
         path: "movies",
         children: [
@@ -48,10 +49,14 @@ const router = createBrowserRouter([
             element: <Movies></Movies>,
           },
           {
-            path: ":id", 
-            element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
-          }
-        ]
+            path: ":id",
+            element: (
+              <PrivateRoute>
+                <MovieDetails></MovieDetails>
+              </PrivateRoute>
+            ),
+          },
+        ],
       },
       {
         path: "add-movie",
@@ -75,30 +80,41 @@ const router = createBrowserRouter([
       },
 
       {
-    path: "/auth",
-    element: <AuthPage></AuthPage>,
-    children: [
-      {
-        path: "login",
-        element: <Login></Login>,
+        path: "/auth",
+        element: <AuthPage></AuthPage>,
+        children: [
+          {
+            path: "login",
+            element: <Login></Login>,
+          },
+          {
+            path: "register",
+            element: <Register></Register>,
+          },
+          {
+            path: "forgot-password",
+            element: <ForgetPassword></ForgetPassword>,
+          },
+          {
+            path: "profile",
+            element: (
+              <PrivateRoute>
+                <UserProfile></UserProfile>
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "updateProfile",
+            element: (
+              <PrivateRoute>
+                <UpdateProfile></UpdateProfile>
+              </PrivateRoute>
+            ),
+          }
+        ],
       },
-      {
-        path: "register",
-        element: <Register></Register>,
-      },
-      {
-    path:"forgot-password",
-    element:<ForgetPassword></ForgetPassword>
-  },{
-    path:"profile",
-    element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>
-  },
     ],
   },
-    ],
-  },
-  
-  
 
   {
     path: "*",

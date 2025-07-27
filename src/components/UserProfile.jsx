@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaUserCircle, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
@@ -36,11 +37,11 @@ const UserProfile = () => {
         </div>
 
         <div className="mt-6">
-          <button
+          <Link to="/auth/updateProfile"
             className="bg-orange-600 hover:bg-orange-700 text-white font-medium px-6 py-2 rounded-lg transition w-auto"
           >
             Edit Profile
-          </button>
+          </Link>
         </div>
       </div>
     </section>

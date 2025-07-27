@@ -133,3 +133,12 @@ A user profile page displaying user information and allowing profile updates, bu
 ![Desktop View](./assets/User_profile_Desktop.png)
 ### 📱 Mobile View
 ![Mobile View](./assets/User_profile_Mobile.png)
+
+---
+## Update Profile Page
+A user-friendly interface for updating user profile's name and image url, built with React and integrated with Firebase and MongoDB
+### 📸 Screenshots
+### 💻 Desktop View
+![Desktop View](./assets/updateProfile_Desktop.png)
+### 📱 Mobile View
+![Mobile View](./assets/updateProfile_Mobile.png)
