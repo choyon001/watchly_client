@@ -96,3 +96,31 @@ A dedicated page for users to view their favorite movies, built with React and i
 ![Mobile View](./assets/favourites_mobile.png)
 ### MongoDB Schema View
 ![MongoDB Schema](./assets/favourites_Mongodb_Schema.png)
+
+---
+## About Page
+A simple about page providing information about the Watchly project
+### 📸 Screenshots
+### 💻 Desktop View
+![Desktop View](./assets/About_desktop.png)
+### 📱 Mobile View
+![Mobile View](./assets/About_mobile.png)
+
+---
+## Home Page
+there are 5 sections in the home page
+1. Sliders
+2. Featured Movies Based on Top Rating
+3. Latest Releases Based on Year
+4. Top Contributors
+5. Why Choose Us
+### 📸 Screenshots
+### 💻 Desktop View
+![Desktop View](./assets/HomePage_Desktop1.png)
+![Desktop View](./assets/HomePage_Desktop2.png)
+![Desktop View](./assets/HomePage_Desktop3.png)
+### 📱 Mobile View
+![Mobile View](./assets/HomePage_Mobile1.png)
+![Mobile View](./assets/HomePage_Mobile2.png)
+![Mobile View](./assets/HomePage_Mobile3.png)
+![Mobile View](./assets/HomePage_Mobile4.png)

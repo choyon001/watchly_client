@@ -12,7 +12,23 @@ import About from "./../pages/About";
 import Slider from "../components/Slider";
 import ForgetPassword from "../components/ForgetPassword";
 import MovieDetails from "../components/MovieDetails";
+import FeaturedMovies from "../components/FeaturedMovies";
+import WhyChooseUs from "../components/WhyChooseUs";
+import LatestReleases from "../components/LatestReleases";
+import TopContributors from "../components/TopContributors";
 
+function HomeLayout() {
+  return (
+    <>
+      <Slider />
+      <FeaturedMovies />
+      
+      <LatestReleases></LatestReleases>
+      <TopContributors></TopContributors>
+      <WhyChooseUs></WhyChooseUs>
+    </>
+  );
+}
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,8 +36,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Slider></Slider>
+        element:<HomeLayout></HomeLayout>
       },
+      
       {
         path: "movies",
         children: [
