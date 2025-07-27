@@ -187,11 +187,9 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-[#F8F6F0] rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/auth/profile">Profile</Link>
               </li>
-              <li>
-                <Link to="/updateProfile">Update</Link>
-              </li>
+             
               <li>
                 <Link to="/" onClick={handleLogOut}>
                   Logout

@@ -16,6 +16,7 @@ import FeaturedMovies from "../components/FeaturedMovies";
 import WhyChooseUs from "../components/WhyChooseUs";
 import LatestReleases from "../components/LatestReleases";
 import TopContributors from "../components/TopContributors";
+import UserProfile from "../components/UserProfile";
 
 function HomeLayout() {
   return (
@@ -88,6 +89,9 @@ const router = createBrowserRouter([
       {
     path:"forgot-password",
     element:<ForgetPassword></ForgetPassword>
+  },{
+    path:"profile",
+    element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>
   },
     ],
   },

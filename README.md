@@ -124,3 +124,12 @@ there are 5 sections in the home page
 ![Mobile View](./assets/HomePage_Mobile2.png)
 ![Mobile View](./assets/HomePage_Mobile3.png)
 ![Mobile View](./assets/HomePage_Mobile4.png)
+
+---
+## User Profile Page
+A user profile page displaying user information and allowing profile updates, built with React and integrated with Firebase and mongoDB.
+### 📸 Screenshots
+### 💻 Desktop View
+![Desktop View](./assets/User_profile_Desktop.png)
+### 📱 Mobile View
+![Mobile View](./assets/User_profile_Mobile.png)
