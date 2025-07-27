@@ -69,10 +69,46 @@ const Register = () => {
     googleSignIn()
       .then((result) => {
         setUser(result.user);
+        // save the user to the database
+        updateUser({
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        })
+          .then(() => {
+            const userData = {
+              displayName: result.user.displayName || "Anonymous",
+              email: result.user.email,
+              photoURL:
+                result.user.photoURL ||
+                "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
+              createdDate: result.user.metadata.creationTime,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            });
+          })
+          .catch((error) => {
+            console.error("Error updating user profile:", error);
+          });
+
         navigate("/");
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "Welcome back!",
+        });
       })
       .catch((error) => {
         console.error("Error signing in with Google:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: error.message,
+        });
       });
   };
 
@@ -183,7 +219,7 @@ const Register = () => {
           />
         </div>
         <div>
-          <label className="block mb-1 font-medium">Password</label>
+          <label className="block mb-1 font-medium" autocomplete="">Password</label>
           <input
             type="password"
             name="password"

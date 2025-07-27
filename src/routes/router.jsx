@@ -11,6 +11,7 @@ import Register from "../components/Register";
 import About from "./../pages/About";
 import Slider from "../components/Slider";
 import ForgetPassword from "../components/ForgetPassword";
+import MovieDetails from "../components/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,16 @@ const router = createBrowserRouter([
       },
       {
         path: "movies",
-        element: <Movies></Movies>,
+        children: [
+          {
+            path: "", // This matches "/movies"
+            element: <Movies></Movies>,
+          },
+          {
+            path: ":id", 
+            element: <PrivateRoute><MovieDetails></MovieDetails></PrivateRoute>,
+          }
+        ]
       },
       {
         path: "add-movie",

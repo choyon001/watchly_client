@@ -47,6 +47,23 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
+        // save the user to the database
+        fetch(`http://localhost:5000/users`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: user.email,
+            lastLogin: user.metadata.lastSignInTime,
+          }),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // console.log("User data updated successfully");
+          })
+          .catch((error) => {
+            // console.error("Error updating user data:", error);
+          });
+          
         // console.log("User logged in with Google:", user);
         setUser(user);
         navigate("/");

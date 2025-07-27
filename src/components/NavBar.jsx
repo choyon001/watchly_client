@@ -176,7 +176,7 @@ const Navbar = () => {
                 <img
                   alt="User profile"
                   src={
-                    user.photoURL || "https://i.ibb.co/2tRrRfq/default-user.png"
+                    user?.photoURL || "https://i.ibb.co/2tRrRfq/default-user.png"
                   }
                   className="object-cover"
                 />
