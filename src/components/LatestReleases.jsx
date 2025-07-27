@@ -7,7 +7,7 @@ const LatestReleases = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/movies")
+    fetch("https://watchly-server.vercel.app/movies")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => parseInt(b.year) - parseInt(a.year));

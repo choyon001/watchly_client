@@ -115,7 +115,7 @@ const AddMovie = () => {
     if (validateForm()) {
     //   backend code for the adding movie 
         try {
-            const response = await fetch("http://localhost:5000/movies", {
+            const response = await fetch("https://watchly-server.vercel.app/movies", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -130,10 +130,10 @@ const AddMovie = () => {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
-            console.log("Movie added:", data);
+            // console.log("Movie added:", data);
             // Handle success (e.g., redirect or show success message)
 
-            console.log("Form data:", formData);
+            // console.log("Form data:", formData);
             //   adding a success message
             toast.success("Movie added successfully!", {
                 position: "top-center",

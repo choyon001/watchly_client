@@ -20,7 +20,7 @@ const Login = () => {
         const user = result.user;
         // console.log("Last sign-in time:", user.metadata.lastSignInTime);
 
-        const response = await fetch(`http://localhost:5000/users`, {
+        const response = await fetch(`https://watchly-server.vercel.app/users`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -48,7 +48,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         // save the user to the database
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://watchly-server.vercel.app/users`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

@@ -33,7 +33,7 @@ const UpdateProfile = () => {
   };
 
   try {
-    const res = await fetch("http://localhost:5000/users/profile", {
+    const res = await fetch("https://watchly-server.vercel.app/users/profile", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUser),
@@ -56,7 +56,7 @@ const UpdateProfile = () => {
         text: "Your profile has been updated successfully.",
         confirmButtonColor: "#ea580c",
       });
-      // Optionally update context/local state here
+      
     } else {
       Swal.fire({
         icon: "info",

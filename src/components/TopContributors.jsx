@@ -5,7 +5,7 @@ const TopContributors = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/top-contributors")
+    fetch("https://watchly-server.vercel.app/top-contributors")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);

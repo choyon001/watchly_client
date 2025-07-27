@@ -24,7 +24,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/movies/${id}`);
+        const response = await fetch(`https://watchly-server.vercel.app/movies/${id}`);
         if (!response.ok) throw new Error("Movie not found");
         const data = await response.json();
         setMovie(data);
@@ -53,7 +53,7 @@ const MovieDetails = () => {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:5000/movies/${id}`, {
+        const res = await fetch(`https://watchly-server.vercel.app/movies/${id}`, {
           method: "DELETE",
         });
 
@@ -80,7 +80,7 @@ const MovieDetails = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/favorites", {
+      const res = await fetch("https://watchly-server.vercel.app/favorites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(favoriteMovie),

@@ -15,7 +15,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        console.log("User logged out successfully");
+        // console.log("User logged out successfully");
         setUser(null);
         navigate("/");
       })

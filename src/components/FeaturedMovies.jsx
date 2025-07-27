@@ -7,7 +7,7 @@ const FeaturedMovies = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/movies")
+    fetch("https://watchly-server.vercel.app/movies")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort((a, b) => b.rating - a.rating);

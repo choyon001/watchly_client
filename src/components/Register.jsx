@@ -83,7 +83,7 @@ const Register = () => {
                 "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
               createdDate: result.user.metadata.creationTime,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://watchly-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const Register = () => {
                 "https://i.ibb.co/4f1z5x3/default-profile-picture.png",
               createdDate: result.user.metadata.creationTime,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://watchly-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

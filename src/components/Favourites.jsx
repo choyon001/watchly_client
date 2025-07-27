@@ -12,7 +12,7 @@ const Favourites = () => {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/favorites/${user.email}`);
+        const res = await fetch(`https://watchly-server.vercel.app/favorites/${user.email}`);
         const data = await res.json();
         setFavorites(data);
       } catch (err) {
@@ -38,7 +38,7 @@ const Favourites = () => {
 
     if (confirmed.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:5000/favorites/${favoriteId}`, {
+        const res = await fetch(`https://watchly-server.vercel.app/favorites/${favoriteId}`, {
           method: "DELETE",
         });
 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { FaUserCircle, FaEnvelope } from "react-icons/fa";
+import {  FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const UserProfile = () => {
